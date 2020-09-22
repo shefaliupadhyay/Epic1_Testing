@@ -1,0 +1,103 @@
+{
+  "database": "db-v1",
+  "tables": [
+    {
+        "table_name": "students",
+        "columns": [
+          {
+              "entity_name": "id",
+              "type": "integer",
+              "constraints": {
+                "NOT_NULL": false,
+                "PRIMARY_KEY": true
+              }
+          },
+          {
+              "entity_name": "name",
+              "type": "string",
+              "constraints": {
+                "MAX_LENGTH": 5,
+                "NOT_NULL": true
+              }
+          },
+          {
+              "entity_name": "subjects",
+              "type": "json"
+          },
+          {
+              "entity_name": "percentage",
+              "type": "float",
+              "constraints": {
+                "NOT_NULL": false
+              }
+          },
+          {
+              "entity_name": "CGPA",
+              "type": "decimal",
+              "constraints": {
+                "NOT_NULL": true
+              }
+          },
+          {
+              "entity_name": "result",
+              "type": "boolean",
+              "constraints": {
+                "NOT_NULL": true
+              }
+          },
+          {
+              "entity_name": "result_date",
+              "type": "time",
+              "constraints": {
+                "NOT_NULL": true,
+                "DEFAULT": "CURRENT_TIMESTAMP"
+              }
+          },
+          {
+              "entity_name": "stream_id",
+              "type": "string",
+              "constraints": {
+                "NOT_NULL": true,
+                "FOREIGN_KEY": true
+              }
+          }
+        ],
+        "relationships": [
+          {
+              "associated_table": "stream",
+              "associated_column": "id",
+              "foreign_key_column": "stream_id"
+          }
+        ]
+    },
+    {
+        "table_name": "stream",
+        "columns": [
+          {
+              "entity_name": "stream_name",
+              "type": "string",
+              "constraints": {
+                "MAX_LENGTH": 32,
+                "NOT_NULL": true
+              }
+          },
+          {
+              "entity_name": "id",
+              "type": "string",
+              "constraints": {
+                "NOT_NULL": true,
+                "PRIMARY_KEY": true
+              }
+          },
+          {
+              "entity_name": "created_date",
+              "type": "date_time",
+              "constraints": {
+                "NOT_NULL": true,
+                "DEFAULT": "CURRENT_TIMESTAMP"
+              }
+          }
+        ]
+    }
+  ]
+}
